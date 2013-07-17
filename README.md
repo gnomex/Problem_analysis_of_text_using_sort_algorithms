@@ -4,7 +4,7 @@ Algorithms and Data Structures Problem
 [Sinatra](http://www.sinatrarb.com/)
 [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-[Chartkit](https://github.com/ankane/chartkick/)
+[Chart.js](http://www.chartjs.org/)
 
 Go!
 ===
