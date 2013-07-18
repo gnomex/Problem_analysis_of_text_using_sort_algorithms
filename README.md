@@ -16,18 +16,6 @@ Algorithms and Data Structures Problem
 	</ul>
 </p>
 
-bubbe
-heep
-insertion
-K
-merge
-os 2 newsort la
-quick
-selection
-shell e shake
-shaker*
-
-
 [Sinatra](http://www.sinatrarb.com/)
 [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
