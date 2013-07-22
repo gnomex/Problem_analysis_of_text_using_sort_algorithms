@@ -1,6 +1,7 @@
 
 require 'rubygems'
 require 'sinatra'
+require './lib/text_analysis.rb'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
@@ -11,10 +12,7 @@ get '/' do
   erb :stats
 end
 
-get '/upload' do
-	erb :upload
-end
-
-post '/upload' do
-	erb "#{params}"
+get '/showfile'	do
+	@contents = TextAnalysis.parse_file "lerolero.txt"
+	erb:show_file
 end

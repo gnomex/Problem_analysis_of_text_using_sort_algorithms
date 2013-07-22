@@ -1,0 +1,21 @@
+<section class="row-fluid">
+	<table class="table table-bordered table-striped">
+	<caption>File Contents</caption>
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Content</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @contents.each do |line| %>
+			<% line.each do |hash, key| %>
+			<tr>
+				<td><%= hash %></td>
+				<td><%= key %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+</section>
