@@ -1,18 +1,25 @@
 module TextAnalysis
-	#require "algorithms.rb"
-	require "benchmark"
 
-	def self.parse_file(filename)
+	#require "rubygems"
+    #require './algorithms.rb'
+	require "benchmark"	
+
+	class TextAnalysis
+		def initialize(args)
+			
+		end
+		
+	end
+
+		
+	def self.parse_file
 		#File.readlines(filename)
 		@contents = Array.new
 
-		line_num=0
 		File.open(filename).each_line do |line|
 			line.gsub!(/\r\n?/, "\n")
-			@contents <<  { "#{line_num}" => "#{line}" }	
-			line_num += 1
+			@contents <<  line	
 		end
-
-		return @contents
 	end
+
 end

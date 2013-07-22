@@ -1,4 +1,4 @@
-require 'containers/heap' # for heapsort
+require "./containers/heap.rb" # for heapsort
 
 =begin rdoc
     This module implements sorting algorithms. Documentation is provided for each algorithm.

@@ -1,4 +1,4 @@
-require 'containers/heap'
+require "./containers/heap.rb"
 
 =begin rdoc
     A Priority Queue is a data structure that behaves like a queue except that elements have an
