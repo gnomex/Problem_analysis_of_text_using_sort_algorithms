@@ -22,7 +22,7 @@ get '/' do
 end
 
 get '/showfile'	do
-	@contents = TextAnalysis.parse_file "lerolero.txt"
+	@contents = TextAnalysis.parse_file "./upload/simpletest.txt"
 	erb:show_file
 end
 
@@ -34,7 +34,7 @@ post '/upload' do
 
 	file_name = "#{params[:myfile][:filename]}"
 
-	path = "./upload/#{file_name}.#{Time.now}"
+	path = "./upload/#{file_name}"
 
 	File.open(path, "w") do |f|
     	f.write(params['myfile'][:tempfile].read)
