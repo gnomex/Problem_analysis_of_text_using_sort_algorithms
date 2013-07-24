@@ -3,15 +3,6 @@ require 'rubygems'
 require 'sinatra'
 require './lib/text_analysis.rb'
 
-
-helpers do
-
-	def file_loaded?
-
-	end
-
-end
-
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
   enable :sessions
@@ -22,7 +13,7 @@ get '/' do
 end
 
 get '/showfile'	do
-	@contents = TextAnalysis.parse_file "./upload/simpletest.txt"
+	@contents = TextAnalysis.parse_file "./simpletest.txt"
 	erb:show_file
 end
 
@@ -44,6 +35,18 @@ post '/upload' do
 end
 
 get '/analyse/:file' do
-	@lol = "Looooooooooool #{params[:file]}"
+	@lol = "#{params[:file]}"
 	erb:analysis
+end
+
+error do
+  'Sorry there was a nasty error - ' 
+end
+
+error 400..510 do
+	'Boom'
+end
+
+get '/*' do
+	status 405
 end

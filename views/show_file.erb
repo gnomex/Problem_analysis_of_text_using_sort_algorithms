@@ -1,5 +1,5 @@
 <section class="row-fluid">
-	<table class="table table-bordered table-striped">
+	<table class="table table-striped">
 	<caption>File Contents</caption>
 	<thead>
 		<tr>
@@ -8,13 +8,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @contents.each do |line| %>
-			<% line.each do |hash, key| %>
+		<% @contents.each_with_index do |line, i| %>
 			<tr>
-				<td><%= hash %></td>
-				<td><%= key %></td>
+				<td class="span2"><%= i %></td>
+				<td><%= line %></td>
 			</tr>
-			<% end %>
 		<% end %>
 	</tbody>
 </table>
