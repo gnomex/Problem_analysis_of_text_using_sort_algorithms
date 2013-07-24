@@ -1,11 +1,18 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'json'
 require './lib/text_analysis.rb'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
   enable :sessions
+end
+
+helpers do
+	def say_hello
+		"Funfoooooooooooooooooooo"
+	end
 end
 
 get '/' do
@@ -35,7 +42,13 @@ post '/upload' do
 end
 
 get '/analyse/:file' do
-	@lol = "#{params[:file]}"
+
+	@file_name = params[:file]
+
+	contents = TextAnalysis.parse_file "./upload/#{@file_name}"
+
+	@distances = TextAnalysis.distances contents
+
 	erb:analysis
 end
 
@@ -44,7 +57,7 @@ error do
 end
 
 error 400..510 do
-	'Boom'
+	'Booooooooooooooom'
 end
 
 get '/*' do
