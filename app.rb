@@ -13,6 +13,10 @@ helpers do
 	def say_hello
 		"Funfoooooooooooooooooooo"
 	end
+
+	def sort(:algorithm)
+		
+	end
 end
 
 get '/' do
@@ -20,7 +24,7 @@ get '/' do
 end
 
 get '/showfile'	do
-	@contents = TextAnalysis.parse_file "./simpletest.txt"
+	@contents = TextAnalysis.parse_file "./LICENSE.txt"
 	erb:show_file
 end
 
@@ -47,13 +51,9 @@ get '/analyse/:file' do
 
 	contents = TextAnalysis.parse_file "./upload/#{@file_name}"
 
-	@distances = TextAnalysis.distances contents
+	@distances = TextAnalysis.frequency contents
 
 	erb:analysis
-end
-
-error do
-  'Sorry there was a nasty error - ' 
 end
 
 error 400..510 do

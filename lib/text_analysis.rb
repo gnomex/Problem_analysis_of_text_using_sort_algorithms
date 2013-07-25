@@ -17,7 +17,8 @@ module TextAnalysis
 		@contents.flatten
 	end
 
-	def self.distances(array)
+	#
+	def self.frequency(array)
 
 		dup = Hash.new(0)
 
@@ -25,4 +26,7 @@ module TextAnalysis
 
 		return dup
 	end
+
+	
+	
 end
