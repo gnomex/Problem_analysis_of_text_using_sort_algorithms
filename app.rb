@@ -14,9 +14,7 @@ helpers do
 		"Funfoooooooooooooooooooo"
 	end
 
-	def sort(:algorithm)
-		
-	end
+
 end
 
 get '/' do

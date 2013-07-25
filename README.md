@@ -3,8 +3,8 @@ Algorithms and Data Structures Problem
 <p>
 	<ul>
 		<li>BubbleSort</li>
-		<li>HeepSort</li>
-		<li>InsertioSort</li>
+		<li>HeapSort</li>
+		<li>InsertionSort</li>
 		<li>K-Sort</li>
 		<li>MergeSort</li>
 		<li>QuickSort</li>

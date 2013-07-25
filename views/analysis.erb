@@ -8,29 +8,37 @@
           <p class="alert alert-success">File is: <strong><%= @file_name %></strong></p>
         <% end %>
       </section>
-
-      <section><!-- Helper method - test! -->
-         <%= say_hello %>
-      </section>
     
   </section>
 
   <section class="row-fluid">
 
+    <div class="tabs-left">
             <ul id="myTab" class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                <li><a href="#bubble" data-toggle="tab">Bubble</a></li>
-                <li><a href="#selection" data-toggle="tab">Selection</a></li>
-              </ul>
+                <li class="active"><a href="#home" data-toggle="tab"><i class="icon-star"></i> Stats</a></li>
+                <li><a href="#bubble" data-toggle="tab">Bubble Sort</a></li>
+                <li><a href="#selection" data-toggle="tab">Selection Sort</a></li>
+                <li><a href="#heap" data-toggle="tab">HeapSort</a></li>
+                <li><a href="#insertion" data-toggle="tab">Insertion Sort</a></li>
+                <li><a href="#k" data-toggle="tab">K Sort</a></li>
+                <li><a href="#merge" data-toggle="tab">Merge Sort</a></li>
+                <li><a href="#quick" data-toggle="tab">Quick Sort</a></li>
+                <li><a href="#shell" data-toggle="tab">Shell Sort</a></li>
+                <li><a href="#shaker" data-toggle="tab">Shaker Sort</a></li>
+                <li><a href="#" data-toggle="tab">newSortMiddlePivot</a></li>
+                <li><a href="#" data-toggle="tab">newSortLeftPivot</a></li>
+            </ul>
+    </div>
 
     <!-- Tabs contents-->
     <div class="control" id="tabs">
 
                 <div id="myTabContent" class="tab-content">
+                  
                   <div class="tab-pane fade in active" id="home">
                     <table class="table table-hover span4">
                       <caption><strong>Ocorrencias entre simbolos</strong></caption>
-                      <thead>
+                      <thead></thead>
                         <tr>
                           <td>Simbolo</td>
                           <td>Frequência</td>
@@ -46,21 +54,34 @@
                       </tbody>
                     </table>
                     <section class="span8">
-                      <canvas id="canvas-stats" height="450" width="450" class="span"></canvas>
+                      <canvas id="canvas-stats" height="600" width="600" class=""></canvas>
 
-                      <script>
+                      <script type="text/javascript">
+                            <% hashes = Array.new %>
+                            <% keys = Array.new %>
+                            <% @distances.each do |hash, key| %>
+                              <% hashes << hash %>
+                              <% keys << key %>
+                            <% end %>
 
-                        var barChartData = {
-                          labels : ["a","b","c","d","e","f","g"],
-                          datasets : [
-                            {
-                              fillColor : "rgba(151,187,205,0.5)",
-                              strokeColor : "rgba(151,187,205,1)",
-                              data : [28,0,5,50,10,1,2]
+                            var hashes = <%= hashes.to_json %>;
+                            var keys = <%= keys.to_json %>;
+                            
+                            var barChartData = {
+                              labels : [] ,
+                              datasets : [
+                                {
+                                  fillColor : "rgba(151,187,205,0.5)",
+                                  strokeColor : "rgba(151,187,205,1)",
+                                  data :  []
+                                }
+                              ]
+                              
                             }
-                          ]
-                          
-                        }
+                            barChartData.labels = hashes ;
+                            barChartData.datasets[0].data = keys;
+
+                            console.log(barChartData);
 
                       var myLine = new Chart(document.getElementById("canvas-stats").getContext("2d")).Bar(barChartData);
                       
@@ -68,12 +89,36 @@
                     </section>
 
                   </div>
+
+
                   <div class="tab-pane fade" id="bubble">
                     <canvas id="canvas-bubble" height="450" width="450" class="span"></canvas>
                   </div>
                   <div class="tab-pane fade" id="selection">
                     <canvas id="canvas-selection" height="450" width="450" class="span"></canvas>
                   </div>
+                  <div class="tab-pane fade" id="heap">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="insertion">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="k">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="merge">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="quick">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="shell">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="shaker">
+                    
+                  </div>
+
                 </div>
     </div>
   </section>

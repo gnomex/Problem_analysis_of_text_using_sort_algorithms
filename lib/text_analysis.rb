@@ -9,9 +9,12 @@ module TextAnalysis
 
 		@contents = Array.new
 
+		regex = Regexp.new("[a-z\s!\.\,;_]*")
+
 		File.open(filename).each_line do |line|
 			line.gsub!(/\r\n?/, "\n")
-			mapping = line.each_char.to_a
+			line.downcase!
+			mapping = line[regex].each_char.to_a 
 			@contents <<  mapping
 		end
 		@contents.flatten
