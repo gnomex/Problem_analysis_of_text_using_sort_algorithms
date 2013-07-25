@@ -1,8 +1,5 @@
-
-require 'rubygems'
 require 'sinatra'
 require 'json'
-require './lib/text_analysis.rb'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
@@ -11,7 +8,7 @@ end
 
 helpers do
 	def say_hello
-		"Funfoooooooooooooooooooo"
+		"Helper example"
 	end
 
 

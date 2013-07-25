@@ -1,4 +1,4 @@
-require "./containers/deque.rb"
+require 'containers/deque'
 
 =begin rdoc
     A Queue is a container that keeps elements in a first-in first-out (FIFO) order. Because of its

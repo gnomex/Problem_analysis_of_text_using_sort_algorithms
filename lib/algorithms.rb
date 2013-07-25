@@ -51,15 +51,5 @@
 module Algorithms; end
 module Containers; end
 
-require "./algorithms/sort.rb"
-
-require "./containers/heap.rb"
-#require './containers/stack.rb'
-#require "./containers/deque.rb"
-#require './containers/queue.rb'
-#require './containers/priority_queue.rb'
-#require './containers/rb_tree_map.rb'
-#require './containers/splay_tree_map.rb'
-#require './containers/suffix_array.rb'
-#require './containers/trie.rb'
-#require './containers/kd_tree.rb'
+require_relative './algorithms/sort.rb'
+require_relative './containers/heap.rb'
