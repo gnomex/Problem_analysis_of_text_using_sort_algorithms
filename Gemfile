@@ -7,8 +7,6 @@ gem "rerun"
 gem "json", "~> 1.8.0"
 gem 'newrelic_rpm'
 
-gem "chartkick"
-
 group :development, :test do
 	gem "rspec", "~> 2.14.1"
 end
