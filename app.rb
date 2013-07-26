@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'benchmark'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
@@ -11,6 +12,19 @@ helpers do
 		"Helper example"
 	end
 
+
+	def sort(array)
+		@stats = Benchmark.bmbm do |x|
+			x.report("Buuble") { @bubble = Algorithms::Sort.bubble_sort array }
+			x.report("Comb") { @comb = Algorithms::Sort.comb_sort array }
+		    x.report("Selection") { @selection = Algorithms::Sort.selection_sort array }
+		    x.report("Heap") { @heap = Algorithms::Sort.heapsort array }
+		    x.report("Insertion") { @insertion = Algorithms::Sort.insertion_sort array }
+		    x.report("Shell") { @shell = Algorithms::Sort.shell_sort array }
+		    x.report("Quick") { @quick = Algorithms::Sort.quicksort array }
+			x.report("Merge") { @merge = Algorithms::Sort.mergesort array }
+		end
+	end
 
 end
 
@@ -44,9 +58,9 @@ get '/analyse/:file' do
 
 	@file_name = params[:file]
 
-	contents = TextAnalysis.parse_file "./upload/#{@file_name}"
+	@contents = TextAnalysis.parse_file "./upload/#{@file_name}"
 
-	@distances = TextAnalysis.frequency contents
+	@distances = TextAnalysis.frequency @contents
 
 	erb:analysis
 end

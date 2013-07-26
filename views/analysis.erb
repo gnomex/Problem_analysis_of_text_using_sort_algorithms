@@ -16,7 +16,7 @@
     <div class="tabs-left">
             <ul id="myTab" class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab"><i class="icon-star"></i> Stats</a></li>
-                <li><a href="#bubble" data-toggle="tab">Bubble Sort</a></li>
+                <li><a href="#bubble" data-toggle="tab" action="">Bubble Sort</a></li>
                 <li><a href="#selection" data-toggle="tab">Selection Sort</a></li>
                 <li><a href="#heap" data-toggle="tab">HeapSort</a></li>
                 <li><a href="#insertion" data-toggle="tab">Insertion Sort</a></li>
@@ -27,11 +27,14 @@
                 <li><a href="#shaker" data-toggle="tab">Shaker Sort</a></li>
                 <li><a href="#" data-toggle="tab">newSortMiddlePivot</a></li>
                 <li><a href="#" data-toggle="tab">newSortLeftPivot</a></li>
+                <li><a href="#stats" data-toggle="tab"><i class="icon-info-sign"></i>BenchMarks</a></li>
             </ul>
     </div>
 
     <!-- Tabs contents-->
     <div class="control" id="tabs">
+
+    <% sort @contents %>
 
                 <div id="myTabContent" class="tab-content">
                   
@@ -54,7 +57,7 @@
                       </tbody>
                     </table>
                     <section class="span8">
-                      <canvas id="canvas-stats" height="600" width="600" class=""></canvas>
+                      <canvas id="canvas-stats" height="500" width="600" class=""></canvas>
 
                       <script type="text/javascript">
                             <% hashes = Array.new %>
@@ -92,30 +95,88 @@
 
 
                   <div class="tab-pane fade" id="bubble">
-                    <canvas id="canvas-bubble" height="450" width="450" class="span"></canvas>
+                    <!--<canvas id="canvas-bubble" height="450" width="450" class="span"></canvas>-->
+
+                    <section class="hero-unit">
+                      <span class="">Array ordenado:</span>
+                      <p class="alert alert-info"><%= @bubble %></p>
+                    </section>
+
                   </div>
                   <div class="tab-pane fade" id="selection">
-                    <canvas id="canvas-selection" height="450" width="450" class="span"></canvas>
+                    <!--<canvas id="canvas-selection" height="450" width="450" class="span"></canvas>-->
+                    <p><%= @selection %></p>
                   </div>
                   <div class="tab-pane fade" id="heap">
+                    <p><%= @heap %></p>
                     
                   </div>
                   <div class="tab-pane fade" id="insertion">
-                    
+                    <p><%= @insertion %></p>
                   </div>
                   <div class="tab-pane fade" id="k">
                     
                   </div>
                   <div class="tab-pane fade" id="merge">
-                    
+                    <p><%= @merge %></p>
                   </div>
                   <div class="tab-pane fade" id="quick">
-                    
+                    <p><%= @quick %></p>
                   </div>
                   <div class="tab-pane fade" id="shell">
-                    
+                    <p><%= @shell %></p>
                   </div>
                   <div class="tab-pane fade" id="shaker">
+                    
+                  </div>
+                  <div class="tab-pane fade" id="stats">
+                    <section class="span">
+                      <canvas id="canvas-benchs" width="800" height="800"></canvas>
+                    </section>
+                    <section>
+                      
+                    <table class="table table-hover span">
+                      <caption><strong>BenchMarks</strong></caption>
+                      <thead></thead>
+                        <tr>
+                          <td># Algorithm</td>
+                          <td>Times</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% lol = Array.new %>
+                        <% @stats.each_with_index do |key, i| %>
+                          <tr>
+                            <td><%= i %></td>
+                            <% lol << key.to_a.last %>
+                            <td><%= key.to_a %></td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                    </section>
+                    <script type="text/javascript">
+                    
+                    var lineChartData = {
+                      labels : ["BubbleSort","HeapSort","InsertionSort","MergeSort","QuickSort","SelectionSort","ShellSort","ShakerSort"],
+                      datasets : [
+                        {
+                          fillColor : "rgba(220,220,220,0.5)",
+                          strokeColor : "rgba(220,220,220,1)",
+                          pointColor : "rgba(220,220,220,1)",
+                          pointStrokeColor : "#fff",
+                          data : []
+                        }
+                      ]
+                    }
+
+                    var datas = <%= lol.to_json %>;
+                    lineChartData.datasets[0].data = datas;
+
+                    console.log(lineChartData);
+                    var stats = new Chart(document.getElementById("canvas-benchs").getContext("2d")).Line(lineChartData);
+                  
+                    </script>
                     
                   </div>
 
