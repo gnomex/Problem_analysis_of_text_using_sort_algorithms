@@ -8,11 +8,6 @@ configure do
 end
 
 helpers do
-	def say_hello
-		"Helper example"
-	end
-
-
 	def sort(array)
 		@stats = Benchmark.bmbm do |x|
 			x.report("Buuble") { @bubble = Algorithms::Sort.bubble_sort array }
@@ -30,11 +25,6 @@ end
 
 get '/' do
   erb :stats
-end
-
-get '/showfile'	do
-	@contents = TextAnalysis.parse_file "./LICENSE.txt"
-	erb:show_file
 end
 
 get '/upload' do
@@ -60,7 +50,9 @@ get '/analyse/:file' do
 
 	@contents = TextAnalysis.parse_file "./upload/#{@file_name}"
 
-	@distances = TextAnalysis.frequency @contents
+	@frequency = TextAnalysis.frequency @contents
+
+	@distances = TextAnalysis.distances @contents
 
 	erb:analysis
 end

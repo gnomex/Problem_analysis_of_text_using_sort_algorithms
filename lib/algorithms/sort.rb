@@ -1,9 +1,3 @@
-#require_relative './containers/heap' # for heapsort
-
-=begin rdoc
-    This module implements sorting algorithms. Documentation is provided for each algorithm.
-    
-=end
 module Algorithms::Sort
   # Bubble sort: A very naive sort that keeps swapping elements until the container is sorted.
   # Requirements: Needs to be able to compare elements with <=>, and the [] []= methods should

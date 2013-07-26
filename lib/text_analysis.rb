@@ -25,10 +25,10 @@
 
 		def self.distances(array)
 			distances = Hash.new(0)
-			#Don't WORK!!!!!!	
 			array.each_with_index do |key, i|
-				distances[key] = i
+				distances[key] = [i]
 			end
+			return distances
 		end
 		
 	end
